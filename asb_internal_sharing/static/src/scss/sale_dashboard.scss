@@ -1,0 +1,39 @@
+$box-shadow : 0 4px 20px rgba(0,0,0,0.15);
+
+.sd_container {
+    width: 97%;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: $o-view-background-color;
+    box-shadow: $box-shadow;
+    padding: 0 10px 0 10px;
+
+    table {
+        > tbody {
+            text-align: center;
+            vertical-align: middle;
+
+            > tr {
+                height: 40px;
+
+                > th {
+                    &:hover {
+                        background-color: lighten($o-brand-primary, 30%);
+                    }
+                }
+
+                .sd_column_val {
+                    color: white;
+                    cursor: pointer;
+                    background-color: $o-brand-primary;
+
+                    &:hover {
+                        background-color: darken($o-brand-primary, 10%);
+                    }
+                }
+            }
+        }
+    }
+
+}

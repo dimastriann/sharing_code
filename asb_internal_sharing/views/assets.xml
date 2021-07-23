@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="sale_asset_backend" inherit_id="web.assets_backend">
+    <xpath expr="." position="inside">
+        <link rel="stylesheet" type="text/scss" href="/asb_internal_sharing/static/src/scss/sale_dashboard.scss"/>
+        <script type="text/javascript" src="/asb_internal_sharing/static/src/js/sale_dashboard.js"/>
+    </xpath>
+  </template>
+</odoo>

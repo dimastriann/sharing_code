@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<templates>
+    <t t-name="Sale.Dashboard">
+        <div class="sd_container">
+            <div class="row">
+
+                <div class="col-sm-6">
+                    <table class="table table-borderless">
+                        <tbody>
+                        	<th colspan="4">QUOTATIONS</th>
+                            <tr>
+                                <td>My Quotations</td>
+                                <td class="sd_column_val sd_open_action" action="asb_internal_sharing.action_sale_order_list"
+                                    context='{"search_default_draft": 1, "search_default_my_quotation": 1}'>
+                                    <t t-esc="formatInt(quotations.total)"/>
+                                </td>
+                                <td>Total Amount</td>
+                                <td class="sd_column_val"><t t-esc="formatFloat(quotations.amount, currency_symbol)"/></td>
+                            </tr>
+                            <tr>
+                                <td>Products Total</td>
+                                <td class="sd_column_val"><t t-esc="formatInt(quotations.products)"/> Kinds</td>
+                                <td>Qty Quotations</td>
+                                <td class="sd_column_val"><t t-esc="formatInt(quotations.qty)"/> Qty</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-sm-6">
+                    <table class="table table-borderless">
+                        <tbody>
+                        	<th colspan="4">ORDERS</th>
+                            <tr>
+                                <td>My Orders</td>
+                                <td class="sd_column_val sd_open_action" action="asb_internal_sharing.action_sale_order_list"
+                                    context='{"search_default_sales": 1, "search_default_my_quotation": 1}'>
+                                    <t t-esc="formatInt(orders.total)"/>
+                                </td>
+                                <td>Total Amount</td>
+                                <td class="sd_column_val"><t t-esc="formatFloat(orders.amount, currency_symbol)"/></td>
+                            </tr>
+                            <tr>
+                                <td>Products Total</td>
+                                <td class="sd_column_val"><t t-esc="formatInt(orders.products)"/> Kinds</td>
+                                <td>Qty Orders</td>
+                                <td class="sd_column_val"><t t-esc="formatInt(orders.qty)"/> Qty</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </t>
+</templates>
