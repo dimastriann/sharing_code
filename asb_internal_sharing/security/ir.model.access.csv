@@ -1,2 +1,2 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_asb_internal_sharing_asb_internal_sharing,asb_internal_sharing.asb_internal_sharing,model_asb_internal_sharing_asb_internal_sharing,base.group_user,1,1,1,1
+access_board_client_data,board.client.data,model_board_client_data,base.group_user,1,1,1,1
