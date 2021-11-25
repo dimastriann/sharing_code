@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="action_dashboard_client" model="ir.actions.client">
+        <field name="name">My Dashboard</field>
+        <field name="tag">dashboard_client</field>
+    </record>
+</odoo>

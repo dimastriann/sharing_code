@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="dashboard_client_data_form" model="ir.ui.view">
+        <field name="name">dashboard.client.data.form</field>
+        <field name="model">board.client.data</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <widget name="web_ribbon" bg_color="bg-primary" title="Showing" attrs="{'invisible': [('show_dashboard', '=', False)]}"/>
+                    <widget name="web_ribbon" bg_color="bg-warning" title="Hidden" attrs="{'invisible': [('show_dashboard', '=', True)]}"/>
+                    <div class="oe_title">
+                        <label for="name"/>
+                        <h1><field name="name"/></h1>
+                    </div>
+                    <field name="suitable_field_ids" invisible="1"/>
+                    <field name="suitable_fields_group_ids" invisible="1"/>
+                    <field name="group_field_type" invisible="1"/>
+                    <field name="model_name" invisible="1"/>
+                    <field name="model_ids" invisible="1"/>
+                    <group>
+                        <group>
+                            <field name="show_dashboard" widget="boolean_toggle"/>
+                            <field name="model_id" options="{'no_open': True, 'no_create': True}"/>
+                            <field name="type_count"/>
+                            <field name="type"/>
+                            <field name="card_layout"
+                                   attrs="{'required': [('type', '=', 'card')], 'invisible': [('type', '!=', 'card')]}"/>
+                            <field name="field_id" string="Measure" options="{'no_create': True}"
+                                   attrs="{'invisible': [('type', 'not in', ['line', 'bar'])], 'required': [('type', 'in', ['line', 'bar'])]}"/>
+                            <field name="groupby_field_id" options="{'no_create': True}"
+                                   attrs="{'required': [('type_count', '!=', 'count')], 'invisible': [('type_count', '=', 'count')]}"/>
+                            <field name="group_by_date" attrs="{'invisible': [('group_field_type', 'not in', ['date', 'datetime'])]}"/>
+                            <field name="color" widget="color"/>
+                            <field name="color2" widget="color"/>
+                            <field name="icon" placeholder="fa fa-shopping-cart" attrs="{'invisible': [('type', '!=', 'card')]}"/>
+                            <field name="user_id" options="{'no_create': True}"/>
+                            <field name="domain_data" widget="domain" options="{'model': 'model_name'}"
+                                   attrs="{'invisible': [('model_id', '=', False)]}"/>
+                        </group>
+                        <div class="col-6 card-wrapper">
+                            <field name="dashboard_data" widget="board_info" nolabel="1"/>
+                        </div>
+                    </group>
+                    <group>
+                    <!-- Example Tag Widget -->
+<!--                        <div class="col-6">-->
+<!--                            <widget name="widget_chart"-->
+<!--                                    options="{'field_name': 'dashboard_data'}"/>-->
+<!--                        </div>-->
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="dashboard_client_data_list" model="ir.ui.view">
+        <field name="name">dashboard.client.data.list</field>
+        <field name="model">board.client.data</field>
+        <field name="arch" type="xml">
+            <tree sample="1">
+                <field name="sequence" widget="handle"/>
+                <field name="name"/>
+                <field name="model_id"/>
+                <field name="type_count"/>
+                <field name="type"/>
+                <field name="field_id"/>
+                <field name="groupby_field_id"/>
+                <field name="user_id" widget="many2one_avatar_user"/>
+                <field name="show_dashboard" widget="boolean_toggle"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_board_client_data" model="ir.actions.act_window">
+        <field name="name">Dashboard Data</field>
+        <field name="res_model">board.client.data</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+    </record>
+</odoo>

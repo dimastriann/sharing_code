@@ -1,0 +1,171 @@
+
+@mixin base-layout {
+    height: 120px;
+//     border: 0.5px solid gray;
+//     margin-top: 5%;
+    box-shadow: 5px 5px 5px rgba(0,0,0,0.3);
+    color: white;
+}
+
+@mixin text-overflow-hidden {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+@mixin color-reverse {
+    mix-blend-mode: difference;
+}
+
+@mixin icon-transform {
+    transition: 0.5s;
+    transform: scale(1.2);
+}
+
+.o_form_view .o_group .card-wrapper {
+    padding-top: 20px;
+
+    .o_field_widget {
+        width: 65%;
+    }
+}
+
+.card-layout_1 {
+    padding: 12px;
+    @include base-layout;
+
+    .wrap-value {
+        position: relative;
+
+        .card-title {
+            @include text-overflow-hidden;
+            text-transform: capitalize;
+            font-size: 18px;
+            font-weight: bold;
+
+            &:after {
+                @include color-reverse;
+            }
+        }
+
+        .card-value {
+            font-size: 35px;
+            font-weight: bold;
+            margin-left: 80px;
+            @include text-overflow-hidden;
+
+            &:hover {
+                cursor: pointer;
+            }
+        }
+
+        .card-icon {
+            position: absolute;
+            font-size: 70px;
+            opacity: 0.3;
+            color: black;
+            top: 25px;
+
+            &:hover {
+                @include icon-transform;
+            }
+        }
+    }
+}
+
+.card-layout_2 {
+    display: flex;
+    @include base-layout;
+
+    .card-icon {
+        font-size: 60px;
+        width: 30%;
+        text-align: center;
+        align-self: center;
+
+        &:hover {
+            @include icon-transform;
+        }
+    }
+
+    .wrap-value {
+        align-items: center;
+        width: 70%;
+        border-left: 1.5px solid;
+
+        .card-value {
+            font-size: 25px;
+            font-weight: bold;
+            border-bottom: 1px solid;
+            border-width: 1.5px;
+            height: 50%;
+            padding: 5%;
+            @include text-overflow-hidden;
+
+            &:hover {
+                cursor: pointer;
+            }
+        }
+
+        .card-title {
+            @include text-overflow-hidden;
+            text-transform: uppercase;
+            font-weight: bold;
+            height: 50%;
+            padding: 5%;
+            font-size: 14px;
+        }
+    }
+}
+
+.card-layout_3 {
+    position: relative;
+    @include base-layout;
+
+    .card-icon {
+        position: absolute;
+        right: 25px;
+        top: 25px;
+        font-size: 55px;
+
+        &:hover {
+            @include icon-transform;
+        }
+    }
+
+    .wrap-value {
+        width: 90%;
+        padding: 10px;
+
+        .card-value {
+            font-size: 25px;
+            font-weight: bold;
+            margin: 7px;
+            @include text-overflow-hidden;
+
+            &:hover {
+                cursor: pointer;
+            }
+        }
+
+        .card-title {
+            @include text-overflow-hidden;
+            text-transform: capitalize;
+            font-weight: bold;
+            font-size: 15px;
+            margin: 10px;
+        }
+    }
+}
+
+.chart-wrapper {
+    box-shadow: 4px 5px 5px rgba(0, 0, 0, 0.2),
+               -3px -3px 5px rgba(0, 0, 0, 0.15);
+    background: white;
+}
+
+.dashboard_client_content {
+    .col-lg-3, col-6 {
+        padding-top: 10px;
+    }
+}

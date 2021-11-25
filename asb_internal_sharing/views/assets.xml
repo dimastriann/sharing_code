@@ -7,8 +7,9 @@
 
         <!-- asset dashboard client -->
         <link rel="stylesheet" type="text/scss" href="/asb_internal_sharing/static/src/scss/dashboard_client.scss"/>
-        <script type="text/javascript" src="/asb_internal_sharing/static/src/js/dashboard/dashboard_client.js"/>
-        <script type="text/javascript" src="/asb_internal_sharing/static/src/js/dashboard/fields_widget.js"/>
+        <script type="text/javascript" src="/asb_internal_sharing/static/src/js/dashboard_client.js"/>
+        <script type="text/javascript" src="/asb_internal_sharing/static/src/js/fields_widget.js"/>
+<!--        <script type="text/javascript" src="/asb_internal_sharing/static/src/js/widget.js"/>-->
     </xpath>
   </template>
 </odoo>

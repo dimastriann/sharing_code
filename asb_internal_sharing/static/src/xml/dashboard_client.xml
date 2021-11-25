@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates>
+
+    <t t-name="BoardClient">
+        <div class="dashboard_client_wrapper col-12" style="background: ghostwhite;">
+            <h1>Dashboard Wrapper</h1>
+            <div class="dashboard_client_content">
+                <div class="row card-row"/>
+                <div class="row chart-row" style="margin-top: 20px; margin-bottom: 20px"/>
+            </div>
+        </div>
+    </t>
+
+    <!-- field widget template -->
+    <t t-name="BoardInfo" owl="1">
+        <!-- LAYOUT 1 -->
+        <t t-if="type == 'card'">
+            <t t-if="boardInfo.card_layout == 'layout1'">
+                <div class="card-layout_1">
+                    <div class="wrap-value">
+                        <div t-attf-class="fa {{ boardInfo.icon ? boardInfo.icon : 'fa-question' }} card-icon"/>
+                        <div class="card-title" t-att-title="boardInfo.title">
+                            <t t-esc="boardInfo.title"/>
+                        </div>
+                        <div t-attf-class="card-value" t-att-title="dataValue" t-on-click="onOpenRecord(boardInfo)">
+                            <t t-esc="dataValue"/>
+                        </div>
+                    </div>
+                </div>
+            </t>
+            <t t-elif="boardInfo.card_layout == 'layout2'">
+                <!-- LAYOUT 2 -->
+                <div class="card-layout_2">
+                    <div t-attf-class="fa {{ boardInfo.icon ? boardInfo.icon : 'fa-question' }} card-icon"/>
+                    <div class="wrap-value">
+                        <div class="card-value" t-att-title="dataValue" t-on-click="onOpenRecord(boardInfo)">
+                            <t t-esc="dataValue"/>
+                        </div>
+                        <div class="card-title" t-att-title="boardInfo.title">
+                            <t t-esc="boardInfo.title"/>
+                        </div>
+                    </div>
+                </div>
+            </t>
+            <t t-elif="boardInfo.card_layout == 'layout3'">
+                <!-- LAYOUT 3 -->
+                <div class="card-layout_3">
+                    <div t-attf-class="fa {{ boardInfo.icon ? boardInfo.icon : 'fa-question' }} card-icon"/>
+                    <div class="wrap-value">
+                        <div class="card-value" t-att-title="dataValue" t-on-click="onOpenRecord(boardInfo)">
+                            <t t-esc="dataValue"/>
+                        </div>
+                        <div class="card-title" t-att-title="boardInfo.title">
+                            <t t-esc="boardInfo.title"/>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </t>
+        <!-- Element for chart -->
+        <t t-else="">
+            <div class="chart-wrapper"/>
+        </t>
+    </t>
+
+</templates>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <menuitem id="dashboard_client_menu_root" name="Dashboard" sequence="2"
+              web_icon="asb_internal_sharing,static/description/board_icon.png">
+        <menuitem id="dashboard_client_menu" name="Dashboard" sequence="1" action="action_dashboard_client"/>
+        <menuitem id="dashboard_client_data" name="Data" sequence="2" action="action_board_client_data"/>
+    </menuitem>
+
+</odoo>
