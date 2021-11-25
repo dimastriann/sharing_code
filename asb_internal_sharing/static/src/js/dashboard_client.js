@@ -29,7 +29,8 @@ const BoardClientAction = AbstractAction.extend(FieldManagerMixin,{
 
     // override willStart function and search object
     async willStart(){
-        this.resData = this._rpc({
+        const superParent = this._super.apply(this, arguments)
+        this.resData = await this._rpc({
             model: this.modelName,
             method: "search_read",
             domain: [["show_dashboard", "=", true]],
@@ -39,10 +40,10 @@ const BoardClientAction = AbstractAction.extend(FieldManagerMixin,{
                 {name: "id", asc: true}
             ],
         })
-        return Promise.all([this._super(), this.resData, this.renderDashboardWidget()])
+        return Promise.all([superParent, this.renderDashboardWidget()])
     },
 
-    // create record fields
+    // create record
     createRecord(value){
         return this.model.makeRecord(this.modelName, [{
             name: this.fieldName,
@@ -63,17 +64,14 @@ const BoardClientAction = AbstractAction.extend(FieldManagerMixin,{
 
     // mounting widget
     renderDashboardWidget(){
-        this.resData.then( results => {
-            results.map( async (data) => {
+//        this.resData.then( results => {
+            this.resData.map( async (data) => {
                 const record = await this.createRecord(data.dashboard_data)
                 const widget = this.instantiateWidget(this.fieldName, record, {dashboard: true})
 //                widget.__node = {};
                 const divElement = document.createElement('div')
-                let def = widget.mount(document.createDocumentFragment())
-//                widget.mount(divElement)
-                def.then( () => {
-                    divElement.append(widget.el)
-                })
+//                widget.mount(document.createDocumentFragment())
+                widget.mount(divElement)
                 if(data.type == "card"){
                     divElement.classList.add('col-lg-3', 'col-6', 'col-12')
                     this.cardWidget.push(divElement)
@@ -84,25 +82,6 @@ const BoardClientAction = AbstractAction.extend(FieldManagerMixin,{
                     console.warn("type of widget is wrong")
                 }
             })
-        })
-//        this.resData.then( results => {
-//            results.map( async (data) => {
-//                const record = await this.createRecord(data.dashboard_data)
-//                const widget = this.instantiateWidget(this.fieldName, record, {dashboard: true})
-////                widget.__node = {};
-//                const divElement = document.createElement('div')
-////                widget.mount(document.createDocumentFragment())
-//                widget.mount(divElement)
-//                if(data.type == "card"){
-//                    divElement.classList.add('col-lg-3', 'col-6', 'col-12')
-//                    this.cardWidget.push(divElement)
-//                } else if(["line", "bar"].includes(data.type)){
-//                    divElement.classList.add('col-lg-6', 'col-12')
-//                    this.chartWidget.push(divElement)
-//                } else {
-//                    console.warn("type of widget is wrong")
-//                }
-//            })
 //        })
     },
 
