@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <t t-name="MyCustomWidget" owl="1">
+<!--        <div class="" t-ref="custom-widget">-->
+<!--            <button t-on-click="onClickWidget">Click Widget</button>-->
+<!--        </div>-->
+
+        <div class="ribbon ribbon-top-right" t-ref="custom-widget">
+            <span t-on-click="onClickWidget" t-att-class="classes" t-att-title="props.title">
+                <t t-esc="props.text"/>
+            </span>
+        </div>
+
+    </t>
+
+    <t t-name="CustomFieldWidget" owl="1">
+        <div class="" t-ref="custom-field-widget">
+            <p>field widget view</p>
+        </div>
+    </t>
+
+</templates>

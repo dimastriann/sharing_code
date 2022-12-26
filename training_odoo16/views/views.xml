@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+
+        <record id="res_users_form_view" model="ir.ui.view">
+            <field name="name">res.user.view.form</field>
+            <field name="model">res.users</field>
+            <field name="inherit_id" ref="base.view_users_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//widget[@name='web_ribbon']" position="before">
+                    <widget name="custom_widget" title="MyWidget" bg_color="bg-warning"/>
+                </xpath>
+                <xpath expr="//page[@name='preferences']" position="after">
+                    <page name="page_widget" string="Widget">
+                        <group>
+                            <group>
+                            </group>
+                            <group name="fields_widget" string="Fields">
+                                <field name="value_test" widget="my_field_widget" attrs="{'test_attr': 'Attributes'}"/>
+                            </group>
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>
